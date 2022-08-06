@@ -275,3 +275,8 @@ void onenet_thread_entry(void *arg)
 ## 项目结果
 
 ![jieguo](./picture/%E6%98%BE%E7%A4%BA%E7%BB%93%E6%9E%9C%E5%91%80.jpg)
+
+## 演示视频
+
+https://www.bilibili.com/video/BV13F411A75e?spm_id_from=333.999.0.0&vd_source=87f977a3b1953ca4d9a1f3378fa91114
+
