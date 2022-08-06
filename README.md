@@ -321,7 +321,7 @@ void onenet_thread_entry(void *arg)
 因为AHT10和SSD1306我们使用的是软件模拟I2C，所以在连接电路的时候需要注意不能连接硬件I2C的引脚。
 在使用这个ESP8266时候，我们用到USB转TTL串口对固件进行更新。并且在接线的时候RX和TX都是相互连接的
 
-![yingjianlianjietu](./%E8%BD%AF%E7%A1%AC%E4%BB%B6%E6%A1%86%E6%9E%B6%E4%B8%8E%E6%B5%81%E5%9B%BE/%E7%A1%AC%E4%BB%B6%E6%A1%86%E5%9B%BE.png)
+![yingjianlianjietu](./%E8%BD%AF%E7%A1%AC%E4%BB%B6%E6%A1%86%E6%9E%B6%E4%B8%8E%E6%B5%81%E5%9B%BE/%E6%AD%A3%E7%A1%AE%E7%9A%84%E7%A1%AC%E4%BB%B6%E6%A1%86%E6%9E%B6.png)
 
 ## 13.效果展示
 
