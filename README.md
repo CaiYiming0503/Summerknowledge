@@ -8,12 +8,11 @@
 
 ## 实现功能
 
-可以实时在OLED 屏幕上显示出当前环境的温湿度，并可将相应数据上传至云平台,若是数据错误，则显示Warning!!!！
+可以实时在OLED 屏幕上显示出当前环境的温湿度，并可将相应数据上传至云平台,若是数据错误，则显示Warning!!!!
 
 ## RT-Thread使用情况
 
 ![RTT使用情況](./picture/rttt%E7%94%A8.png)
-
 
 ## 软件包
 
@@ -27,13 +26,14 @@
 6. cJSON：使用C语言编写的JSON数据解析器。
 
 ## 硬件框架图
+
 ![硬件框架](./%E8%BD%AF%E7%A1%AC%E4%BB%B6%E6%A1%86%E6%9E%B6%E4%B8%8E%E6%B5%81%E5%9B%BE/%E7%A1%AC%E4%BB%B6%E6%A1%86%E6%9E%B6%E5%9B%BE.png)
 
-
 ## 硬件引脚连接如下所示
+ 
+ ![I2C引腳](./picture/HPM6750IIC.png)
 
- ![I2C引腳](./picture/IIC%E5%BC%95%E8%84%9A.png)
- ![8266引腳](./picture/8266%E6%BB%B4.png)
+ ![8266引腳](./picture/HPM6750%20ESP8266png.png)
 
  **[注意]**
 
@@ -73,7 +73,6 @@ int main(void)
     return 0;
 }
 
-
 ```
 
 ## AHT10硬件初始化
@@ -96,7 +95,6 @@ INIT_ENV_EXPORT(rt_hw_aht10_port);
 
 ![main.c](./picture/sensor.png)
 
-
 ## 温湿度线程的入口函数
 
 ```C
@@ -105,7 +103,7 @@ INIT_ENV_EXPORT(rt_hw_aht10_port);
 {
     _humi_dev = rt_device_find(HUMI_DEVICE_NAME); //通过查找获取句柄
     if (_humi_dev == RT_NULL)
-    { //如果差找不到，我们输出如下
+    { //如果查找不到，我们输出如下
         rt_kprintf("find %s device failed.\r\n", HUMI_DEVICE_NAME);
         return;
     }
@@ -202,9 +200,12 @@ void oled_thread_entry(void *arg)
  **[注意]**
 
 1.在这部分中定义了两个字符串用于存储OLED显示模块通过sprintf转出来的字符串
+
 char a[20]="";
 char b[20]="";
+
 2.线程while循环里要放实现线程功能的全部代码；外头只放只需要运行一次的初始化和局部变量声明；
+
 3.线程里的结构就和裸机开发时候main函数是一样的；线程切换的时候就和裸机主函数被中断是一样的；
 在哪里被中断回来时还是从哪里开始运行；切换回来不会从线程入口函数一开始运行；
 所以说我们的sprintf要放进while(1)循环里。
@@ -243,8 +244,8 @@ void onenet_thread_entry(void *arg)
  在main函数中创建一个互斥锁
 
  ```C
-
- _sensor_mtx = rt_mutex_create("sensor", RT_IPC_FLAG_PRIO);
+    
+    _sensor_mtx = rt_mutex_create("sensor", RT_IPC_FLAG_PRIO);
     if (_sensor_mtx == RT_NULL)
     {
         LOG_E("create sensor mtx failed.");
@@ -252,6 +253,7 @@ void onenet_thread_entry(void *arg)
     }
 
 ```
+
 进行互斥锁的获取
 
 ```C
@@ -259,6 +261,7 @@ void onenet_thread_entry(void *arg)
  rt_mutex_take(_sensor_mtx, RT_WAITING_FOREVER);
 
  ```
+
 互斥锁的释放
 
 ```C
@@ -266,20 +269,9 @@ void onenet_thread_entry(void *arg)
  rt_mutex_release(_sensor_mtx);
 
  ```
+
 在这个线程入口函数中，我们进行了aht10_temp类型的强转，可以使得我们在云平台上传成功小数数据。
 
 ## 项目结果
 
-整体连接如下
- ![連接](./picture/%E6%95%B4%E4%BD%93%E8%BF%9E%E6%8E%A5.png)
- 正常状态下显示温湿度数据
-
- ![顯示](./picture/%E6%98%BE%E7%A4%BA%E5%95%A6.png)
-
-数据错误时候显示如下
-![错](./picture/%E9%94%99%E8%AF%AF%E6%98%BE%E7%A4%BA.png)
- ![云](./picture/%E4%B8%8A%E4%BA%91.png)
-
-#项目视频
-
-![shipin](./%E4%BD%9C%E5%93%81%E6%BC%94%E7%A4%BA%E8%A7%86%E9%A2%91/%E6%BC%94%E7%A4%BA%E8%A7%86%E9%A2%91.mp4)
+![jieguo](./picture/%E6%98%BE%E7%A4%BA%E7%BB%93%E6%9E%9C%E5%91%80.jpg)
