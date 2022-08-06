@@ -32,7 +32,7 @@
 
 ![软件框架图](./%E8%BD%AF%E7%A1%AC%E4%BB%B6%E6%A1%86%E6%9E%B6%E4%B8%8E%E6%B5%81%E5%9B%BE/%E8%BD%AF%E4%BB%B6%E6%A1%86%E6%9E%B62.0.png)
 
-##5. RT-Thread使用情况
+## 5.RT-Thread使用情况
 
 ![RTT使用情況](./picture/rttt%E7%94%A8.png)
 
@@ -113,7 +113,7 @@ INIT_ENV_EXPORT(rt_hw_aht10_port);
 
 
 
-##8.温湿度线程
+## 8.温湿度线程
 
 
 ![renwuyi](./picture/%E6%B8%A9%E6%B9%BF%E5%BA%A6.png)
@@ -170,7 +170,7 @@ INIT_ENV_EXPORT(rt_hw_aht10_port);
 rt_int32_t aht10_temp;
 rt_int32_t aht10_humi;
 
-##9. OLED显示线程
+## 9.OLED显示线程
 
 ```C
 
