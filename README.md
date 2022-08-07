@@ -117,6 +117,7 @@ INIT_ENV_EXPORT(rt_hw_aht10_port);
 
 
 ![renwuyi](./picture/%E6%B8%A9%E6%B9%BF%E5%BA%A6.png)
+
 ```C
 
  void temp_humi_thread_entry(void *arg)
@@ -166,10 +167,14 @@ INIT_ENV_EXPORT(rt_hw_aht10_port);
   **[注意]**
 
 在这里，我们使用的是在函数外声明的全局变量，把temp和humi数据值赋值给全局变量。
+```C
 
 rt_int32_t aht10_temp;
 
 rt_int32_t aht10_humi;
+
+```
+
 
 ## 9.OLED显示线程
 
@@ -238,8 +243,13 @@ if (rt_tick_get() - _tick_timeout < (RT_TICK_MAX / 2))
 
 1.在这部分中定义了两个字符串用于存储OLED显示模块通过sprintf转出来的字符串
 
+```C
+
 char a[20]="";
+
 char b[20]="";
+
+```
 
 2.线程while循环里要放实现线程功能的全部代码；外头只放只需要运行一次的初始化和局部变量声明；
 
