@@ -49,9 +49,9 @@
 
 **5.2设备驱动框架使用情况**
 
- 1.IIC设备框架
- 2.UART设备驱动框架
- 3.Sensor设备驱动框架
+1. IIC设备框架
+2. UART设备驱动框架
+3. Sensor设备驱动框架
 
 ## 6.主函数部分
 
@@ -168,6 +168,7 @@ INIT_ENV_EXPORT(rt_hw_aht10_port);
 在这里，我们使用的是在函数外声明的全局变量，把temp和humi数据值赋值给全局变量。
 
 rt_int32_t aht10_temp;
+
 rt_int32_t aht10_humi;
 
 ## 9.OLED显示线程
